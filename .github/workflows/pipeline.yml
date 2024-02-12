@@ -1,0 +1,39 @@
+name: LSE pipeline
+
+on: [push, fork]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Create info file
+      run: |
+        echo "Author name: ${{ github.event.head_commit.author.name }}" >> commit_info.txt
+        echo "Author email: ${{ github.event.head_commit.author.email }}" >> commit_info.txt
+        echo "Commit hash: ${{ github.event.head_commit.id }}" >> commit_info.txt
+        echo "Commit message: ${{ github.event.head_commit.message }}" >> commit_info.txt
+    - name: Archive info file
+      uses: actions/upload-artifact@v2
+      with:
+        name: commit_info
+        path: commit_info.txt
+
+    - name: Directory
+      run: mkdir -p ${{ github.event.head_commit.author.name }}/directory
+
+    - name: File 1
+      run: |
+        echo "Author name: ${{ github.event.head_commit.author.name }}" >> directory/file1.txt
+
+    - name: File 2
+      run: |
+        echo "Author name: ${{ github.event.head_commit.author.name }}" >> directory/file2.txt
+
+    - name: Archive Release build
+      uses: actions/upload-artifact@v4
+      with:
+        name: LiveSyncEngine
+        path: ${{github.workspace}}/bin/ ${{github.workspace}}/include/
