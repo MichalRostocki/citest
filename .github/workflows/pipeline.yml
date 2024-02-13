@@ -22,7 +22,7 @@ jobs:
         path: commit_info.txt
 
     - name: Directory
-      run: mkdir -p ${{ github.event.head_commit.author.name }}/directory
+      run: mkdir -p directory
 
     - name: Directory ls
       run: ls && ls directory
