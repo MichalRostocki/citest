@@ -9,9 +9,11 @@ jobs:
     steps:
       - name: Set color
         id: color-selector
+        shell: bash
         run: |
           echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
           echo "output file: $GITHUB_OUTPUT"
       - name: Get color
+        shell: bash
         run: echo "The selected color is ${{ steps.color-selector.outputs.SELECTED_COLOR }}"
 
