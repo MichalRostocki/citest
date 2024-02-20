@@ -10,9 +10,7 @@ jobs:
       - name: Set color
         id: color-selector
         run: |
-          echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
-          echo "output file: ${{ GITHUB_OUTPUT }}"
-          Get-Variable
+          echo "SELECTED_COLOR=green" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
       - name: Get color
         run: echo "The selected color is ${{ steps.color-selector.outputs.SELECTED_COLOR }}"
 
