@@ -4,7 +4,7 @@ on: [push, fork]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Set color
@@ -13,5 +13,5 @@ jobs:
       - name: Get color
         env:
           SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
-        run: echo "The selected color is $SELECTED_COLOR"
+        run: echo "The selected color is %SELECTED_COLOR%"
 
