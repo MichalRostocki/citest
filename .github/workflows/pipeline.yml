@@ -11,7 +11,7 @@ jobs:
         id: color-selector
         run: |
           echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
-          echo $GITHUB_OUTPUT
+          echo "output file: $GITHUB_OUTPUT"
       - name: Get color
         run: echo "The selected color is ${{ steps.color-selector.outputs.SELECTED_COLOR }}"
 
