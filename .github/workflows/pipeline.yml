@@ -9,6 +9,7 @@ jobs:
     steps:
     - name: Determine branch name
       run: | 
+        echo ${GITHUB_REF#refs/heads/}"
         "branch_name=${GITHUB_REF#refs/heads/}" | Out-File -FilePath $env:GITHUB_ENV -Append
 
     - name: Create info file
