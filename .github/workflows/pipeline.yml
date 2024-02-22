@@ -37,5 +37,5 @@ jobs:
           "build_type=$type" | Out-File -FilePath $env:GITHUB_ENV  -Append
 
     - name: Print
-      run: echo "$env:build_type : $env:branch_name"
+      run: echo "$env:build_type - $env:branch_name"
 
