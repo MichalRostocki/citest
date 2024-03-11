@@ -1,0 +1,13 @@
+name: Repository dispatch resolver
+
+on: 
+  repository_dispatch:
+    types: [lse-update]
+
+jobs:
+    dispatch:
+      runs-on: ubuntu-latest
+
+      steps:
+      - name: "Schedule develop build"
+        run: echo ' Branch: ${{ github.event.client_payload.branch }}'
